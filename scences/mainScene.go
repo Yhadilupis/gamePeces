@@ -25,9 +25,6 @@ var startButton *widget.Button
 
 func (e EscenaPrincipal) Cargar() {
 
-	text := views.NewCanvaText("Rata En Accion!!!", color.Black, 35, true, fyne.NewSize(300, 200), fyne.NewPos(200, 50), false)
-	title := views.AddContainerTitle(text, fyne.NewSize(300, 200), fyne.NewPos(200, 25))
-
 	
 	img1 := canvas.NewImageFromURI(storage.NewFileURI("./assets/pez1.png"))
 	img2 := canvas.NewImageFromURI(storage.NewFileURI("./assets/pez2.png"))
@@ -82,7 +79,6 @@ func (e EscenaPrincipal) Cargar() {
 	fondo.Resize(fyne.NewSize(800, 600))
 
 	startButton = views.CreateButton("Start Game", func() {
-		title.Hide()
 		startButton.Hide()
 		//Hilos logicos para mover el pez
 		go pezModelo.Mover(pez1)
@@ -95,5 +91,5 @@ func (e EscenaPrincipal) Cargar() {
 	}, fyne.NewSize(150, 30), fyne.NewPos(300, 300), false)
 
 	
-	e.window.SetContent(container.NewWithoutLayout(title, fondo, pez1, pez2, pez3, pez4, pez5, etiquetaTiempo, mensajeFinal, startButton, botonFinal))
+	e.window.SetContent(container.NewWithoutLayout(fondo, pez1, pez2, pez3, pez4, pez5, etiquetaTiempo, mensajeFinal, startButton, botonFinal))
 }
