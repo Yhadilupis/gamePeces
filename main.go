@@ -1,14 +1,16 @@
 package main
 
 import (
+
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
-	a := app.New()
-	w := a.NewWindow("Hello World")
-
-	w.SetContent(widget.NewLabel("Hello World!"))
-	w.ShowAndRun()
+	myApp := app.New()
+	myWindow := myApp.NewWindow(">>ATRAPA UN PEZ EN EL MENOR TIEMPO POSIBLE<<")
+	myWindow.CenterOnScreen()
+	myWindow.SetFixedSize(true)
+	myWindow.Resize(fyne.NewSize(800, 600))
+	
 }
