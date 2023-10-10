@@ -14,21 +14,21 @@ type Timer struct {
 
 func NuevoTemporizadorModelo() *Timer {
 	return &Timer{
-		tiempo: 1,
+		tiempo: 60,
 	}
 }
 
 
 func (t *Timer) IniciarTemporizador(pez *Pez, etiqueta *canvas.Text, botonFinal *widget.Button, etiquetaFinal *canvas.Text) {
-	
+
 	for t.tiempo > 0 && pez.vida {
 		
 		time.Sleep(time.Second * 1)
 		
-		t.tiempo++
+		t.tiempo--
 		
-		cadena := "Tiempo:" + strconv.FormatUint(uint64(t.tiempo), 10) + " segundos"
-		
+		cadena := "Tiempo Restante:" + strconv.FormatUint(uint64(t.tiempo), 10) + " segundos"
+		// Actualizamos la etiqueta
 		etiqueta.Text = cadena
 		etiqueta.Refresh()
 	}
@@ -38,7 +38,7 @@ func (t *Timer) IniciarTemporizador(pez *Pez, etiqueta *canvas.Text, botonFinal 
 	cadena := "Felicidades atrapazte uno :)"
 	etiqueta.Text = cadena
 	etiqueta.Refresh()
-	etiquetaFinal.Text = "Tiempo: " + strconv.FormatUint(uint64(t.tiempo), 10) + " segundos"
+	etiquetaFinal.Text = "Tiempo restante: " + strconv.FormatUint(uint64(t.tiempo), 10) + " segundos"
 	etiquetaFinal.Refresh()
 	
 	botonFinal.Show()
